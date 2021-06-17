@@ -73,7 +73,7 @@ void get_Str(trie *temp,string s){
     }
 }
 
-bool Suggest_Str(string s){
+void Suggest_Str(string s){
 
     trie *temp=root;
 
@@ -82,17 +82,15 @@ bool Suggest_Str(string s){
         if(temp->neighbour[s[i]-'a']==NULL){
 
             get_Str(temp,s.substr(0,i));
-            return false;
+            return ;
         }
 
         temp=temp->neighbour[s[i]-'a'];
     }
 
-    if(temp->terminal_node) return true;
-
     get_Str(temp,s);
 
-    return false;
+    return ;
 }
 
 void solve(){
